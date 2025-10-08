@@ -1,0 +1,11 @@
+services:
+  wellness-api:
+    build:
+      context: ../..
+      dockerfile: apps/wellness-api/Dockerfile
+    container_name: wellness-api
+    ports:
+      - "3050:3050"
+    environment:
+      NODE_ENV: dev
+    restart: unless-stopped
