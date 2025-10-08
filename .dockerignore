@@ -1,0 +1,20 @@
+# Ignore dependencies and build artifacts from the host machine
+node_modules
+apps/*/node_modules
+packages/*/node_modules
+
+apps/*/dist
+packages/*/dist
+
+# Miscellaneous local files we do not need in the build context
+.turbo
+.vscode
+.git
+.gitignore
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
