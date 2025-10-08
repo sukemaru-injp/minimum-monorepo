@@ -1,3 +1,6 @@
-export const calledSharedLib = () => {
-	return "called shared-lib";
-};
+export {
+	type CreateLoggerOptions,
+	createLogger,
+	type Logger,
+	logger
+} from './logger';

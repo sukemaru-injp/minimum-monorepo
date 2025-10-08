@@ -1,15 +1,21 @@
 import { serve } from "@hono/node-server";
-import { calledSharedLib } from "@minimum-monorepo/shared-lib";
+import { logger } from "@minimum-monorepo/shared-lib";
 import { Hono } from "hono";
 
 const app = new Hono();
 
 app.get("/", (c) => {
+	logger.info("Root endpoint hit", {
+		path: c.req.path,
+		userAgent: c.req.header("user-agent") ?? "unknown",
+	});
 	return c.text("Hello Hono!hono hono");
 });
 
 app.get("/hc", (c) => {
-	console.log(calledSharedLib());
+	logger.warn("Health check requested", {
+		path: c.req.path,
+	});
 	return c.text("Hello Hono! Health Check");
 });
 
@@ -19,6 +25,6 @@ serve(
 		port: 3050,
 	},
 	(info) => {
-		console.log(`Server is running on http://localhost:${info.port}`);
+		logger.info("Server started", { port: info.port });
 	},
 );
