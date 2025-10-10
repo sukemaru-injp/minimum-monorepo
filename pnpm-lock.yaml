@@ -20,6 +20,9 @@ importers:
       '@hono/node-server':
         specifier: ^1.19.5
         version: 1.19.5(hono@4.9.10)
+      '@hono/zod-openapi':
+        specifier: ^1.1.3
+        version: 1.1.3(hono@4.9.10)(zod@4.1.12)
       '@minimum-monorepo/shared-lib':
         specifier: workspace:^
         version: link:../../packages/shared-lib
@@ -29,6 +32,12 @@ importers:
       neverthrow:
         specifier: ^8.2.0
         version: 8.2.0
+      zod:
+        specifier: ^4.1.12
+        version: 4.1.12
+      zod-openapi:
+        specifier: ^5.4.3
+        version: 5.4.3(zod@4.1.12)
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.2.5
@@ -60,6 +69,11 @@ importers:
         version: 5.9.3
 
 packages:
+
+  '@asteasolutions/zod-to-openapi@8.1.0':
+    resolution: {integrity: sha512-tQFxVs05J/6QXXqIzj6rTRk3nj1HFs4pe+uThwE95jL5II2JfpVXkK+CqkO7aT0Do5AYqO6LDrKpleLUFXgY+g==}
+    peerDependencies:
+      zod: ^4.0.0
 
   '@biomejs/biome@2.2.5':
     resolution: {integrity: sha512-zcIi+163Rc3HtyHbEO7CjeHq8DjQRs40HsGbW6vx2WI0tg8mYQOPouhvHSyEnCBAorfYNnKdR64/IxO7xQ5faw==}
@@ -283,6 +297,19 @@ packages:
     peerDependencies:
       hono: ^4
 
+  '@hono/zod-openapi@1.1.3':
+    resolution: {integrity: sha512-ikA8p0Jt7yplxOqbYwdh8rCQWaGN4bu8zK1HbCWqfWT9clo87L32D0eAQ/r0tJodtZbTV5d1vPB75FCkUt1Jdg==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      hono: '>=4.3.6'
+      zod: ^4.0.0
+
+  '@hono/zod-validator@0.7.4':
+    resolution: {integrity: sha512-biKGn3BRJVaftZlIPMyK+HCe/UHAjJ6sH0UyXe3+v0OcgVr9xfImDROTJFLtn9e3XEEAHGZIM9U6evu85abm8Q==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.25.0 || ^4.0.0
+
   '@rollup/rollup-linux-x64-gnu@4.52.4':
     resolution: {integrity: sha512-Wi6AXf0k0L7E2gteNsNHUs7UMwCIhsCTs6+tqQ5GPwVRWMaflqGec4Sd8n6+FNFDw9vGcReqk2KzBDhCa1DLYg==}
     cpu: [x64]
@@ -405,6 +432,9 @@ packages:
   one-time@1.0.0:
     resolution: {integrity: sha512-5DXOiRKwuSEcQ/l0kGCF6Q3jcADFv5tSmRaJck/OqkVFcOzutB134KRSfF0xDrL39MNnqxbHBbUUcjZIhTgb2g==}
 
+  openapi3-ts@4.5.0:
+    resolution: {integrity: sha512-jaL+HgTq2Gj5jRcfdutgRGLosCy/hT8sQf6VOy+P+g36cZOjI1iukdPnijC+4CmeRzg/jEllJUboEic2FhxhtQ==}
+
   readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
@@ -490,7 +520,26 @@ packages:
     resolution: {integrity: sha512-NoBZauFNNWENgsnC9YpgyYwOVrl2m58PpQ8lNHjV3kosGs7KJ7Npk9pCUE+WJlawVSe8mykWDKWFSVfs3QO9ww==}
     engines: {node: '>= 12.0.0'}
 
+  yaml@2.8.1:
+    resolution: {integrity: sha512-lcYcMxX2PO9XMGvAJkJ3OsNMw+/7FKes7/hgerGUYWIoWu5j/+YQqcZr5JnPZWzOsEBgMbSbiSTn/dv/69Mkpw==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
+  zod-openapi@5.4.3:
+    resolution: {integrity: sha512-6kJ/gJdvHZtuxjYHoMtkl2PixCwRuZ/s79dVkEr7arHvZGXfx7Cvh53X3HfJ5h9FzGelXOXlnyjwfX0sKEPByw==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      zod: ^3.25.74 || ^4.0.0
+
+  zod@4.1.12:
+    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
+
 snapshots:
+
+  '@asteasolutions/zod-to-openapi@8.1.0(zod@4.1.12)':
+    dependencies:
+      openapi3-ts: 4.5.0
+      zod: 4.1.12
 
   '@biomejs/biome@2.2.5':
     optionalDependencies:
@@ -616,6 +665,19 @@ snapshots:
   '@hono/node-server@1.19.5(hono@4.9.10)':
     dependencies:
       hono: 4.9.10
+
+  '@hono/zod-openapi@1.1.3(hono@4.9.10)(zod@4.1.12)':
+    dependencies:
+      '@asteasolutions/zod-to-openapi': 8.1.0(zod@4.1.12)
+      '@hono/zod-validator': 0.7.4(hono@4.9.10)(zod@4.1.12)
+      hono: 4.9.10
+      openapi3-ts: 4.5.0
+      zod: 4.1.12
+
+  '@hono/zod-validator@0.7.4(hono@4.9.10)(zod@4.1.12)':
+    dependencies:
+      hono: 4.9.10
+      zod: 4.1.12
 
   '@rollup/rollup-linux-x64-gnu@4.52.4':
     optional: true
@@ -748,6 +810,10 @@ snapshots:
     dependencies:
       fn.name: 1.1.0
 
+  openapi3-ts@4.5.0:
+    dependencies:
+      yaml: 2.8.1
+
   readable-stream@3.6.2:
     dependencies:
       inherits: 2.0.4
@@ -829,3 +895,11 @@ snapshots:
       stack-trace: 0.0.10
       triple-beam: 1.4.1
       winston-transport: 4.9.0
+
+  yaml@2.8.1: {}
+
+  zod-openapi@5.4.3(zod@4.1.12):
+    dependencies:
+      zod: 4.1.12
+
+  zod@4.1.12: {}

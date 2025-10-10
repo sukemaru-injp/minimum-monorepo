@@ -1,8 +1,10 @@
 import { serve } from '@hono/node-server';
 import { logger } from '@minimum-monorepo/shared-lib';
-import { Hono } from 'hono';
+import { OpenAPIHono } from '@hono/zod-openapi';
+import wellnessApi from './routes';
 
-const app = new Hono();
+// Create main app
+const app = new OpenAPIHono();
 
 app.get('/', (c) => {
 	logger.info('Root endpoint hit', {
@@ -18,6 +20,8 @@ app.get('/hc', (c) => {
 	});
 	return c.text('Hello Hono! Health Check');
 });
+
+app.route('/v1', wellnessApi);
 
 serve(
 	{
