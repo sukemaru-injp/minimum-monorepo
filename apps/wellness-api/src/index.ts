@@ -23,6 +23,17 @@ app.get('/hc', (c) => {
 
 app.route('/v1', wellnessApi);
 
+app.doc('/doc', {
+	openapi: '3.0.0', // OpenAPIのバージョン
+	info: {
+		version: '1.0.0',
+		title: 'Wellness API', // APIのタイトル
+		description:
+			'An API to manage wellness activities, built with Hono and OpenAPI.'
+	}
+	// servers: [{ url: 'http://localhost:3000', description: 'Development server' }]
+});
+
 serve(
 	{
 		fetch: app.fetch,

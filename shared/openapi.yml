@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Wellness API
+  description: An API to manage wellness activities, built with Hono and OpenAPI.
+components:
+  schemas: {}
+  parameters: {}
+paths:
+  /v1/sample:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                  minLength: 1
+                  example: ジャガイモを買う
+              required:
+                - body
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: xxxxx
+                  body:
+                    type: string
+                    example: ジャガイモを買う
+                required:
+                  - id
+                  - body
+    get:
+      responses:
+        "200":
+          description: List of samples
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: xxxxx
+                  title:
+                    type: string
+                    minLength: 1
+                    example: ジャガイモを買う
+                required:
+                  - id
+                  - title

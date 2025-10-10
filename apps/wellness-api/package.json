@@ -7,7 +7,8 @@
 		"start": "node dist/index.js",
 		"lint": "biome lint --write",
 		"format": "biome format --write",
-		"check": "biome check --write"
+		"check": "biome check --write",
+		"gen:openapi": "node --import tsx/esm scripts/generate-openapi.ts"
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.19.5",
@@ -22,6 +23,7 @@
 		"@biomejs/biome": "^2.2.5",
 		"@types/node": "^20.11.17",
 		"tsx": "^4.7.1",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"yaml": "^2.8.1"
 	}
 }

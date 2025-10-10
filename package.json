@@ -8,7 +8,8 @@
 		"test": "turbo run test",
 		"lint": "turbo run lint",
 		"format": "turbo run format",
-		"check": "turbo run check"
+		"check": "turbo run check",
+		"gen:openapi": "pnpm --filter wellness-api gen:openapi"
 	},
 	"private": true,
 	"author": "sukemaru-injp",
