@@ -1,4 +1,22 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: wellness-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: wellness
+      POSTGRES_PASSWORD: wellness_dev_pass
+      POSTGRES_DB: wellness_database_local
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wellness"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
   wellness-api:
     build:
       context: ../..
@@ -8,4 +26,11 @@ services:
       - "3050:3050"
     environment:
       NODE_ENV: dev
+      DATABASE_URL: postgres://wellness:wellness_dev_pass@postgres:5432/wellness_database_local
+    depends_on:
+      postgres:
+        condition: service_healthy
     restart: unless-stopped
+
+volumes:
+  postgres_data:
