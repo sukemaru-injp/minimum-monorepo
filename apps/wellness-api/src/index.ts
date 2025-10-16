@@ -1,6 +1,6 @@
 import { serve } from '@hono/node-server';
-import { logger } from '@minimum-monorepo/shared-lib';
 import { OpenAPIHono } from '@hono/zod-openapi';
+import { logger } from '@minimum-monorepo/shared-lib';
 import wellnessApi from './routes';
 
 // Create main app

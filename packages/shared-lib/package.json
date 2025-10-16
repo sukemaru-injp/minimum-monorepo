@@ -10,15 +10,15 @@
 		}
 	},
 	"scripts": {
-		"build": "tsgo -p tsconfig.json",
-		"dev": "tsgo -w -p tsconfig.json",
+		"build": "tsdown",
+		"dev": "tsdown --watch",
 		"lint": "biome lint --write",
 		"format": "biome format --write",
 		"check": "biome check --write"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.2.5",
-		"@typescript/native-preview": "^7.0.0-dev.20251008.1",
+		"tsdown": "^0.15.7",
 		"typescript": "^5.9.3"
 	},
 	"dependencies": {

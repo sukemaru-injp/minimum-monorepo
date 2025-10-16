@@ -1,7 +1,6 @@
-import { postSampleHandler, postSampleRoute } from './PostSample';
-import { getSampleRoute, getSampleHandler } from './GetSample';
-
 import { OpenAPIHono } from '@hono/zod-openapi';
+import { getSampleHandler, getSampleRoute } from './GetSample';
+import { postSampleHandler, postSampleRoute } from './PostSample';
 
 const wellnessApi = new OpenAPIHono();
 
