@@ -40,6 +40,6 @@ serve(
 		port: 3050
 	},
 	(info) => {
-		logger.info('Server started', { port: info.port });
+		logger.info(`Server started: port:${info.port}`);
 	}
 );

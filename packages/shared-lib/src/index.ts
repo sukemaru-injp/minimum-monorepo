@@ -1,4 +1,4 @@
-export { Branded } from './Branded';
+export type { Branded } from './Branded';
 export {
 	type CreateLoggerOptions,
 	createLogger,
