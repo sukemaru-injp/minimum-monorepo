@@ -65,7 +65,7 @@ importers:
         specifier: ^2.2.5
         version: 2.2.5
       tsdown:
-        specifier: latest
+        specifier: ^0.15.7
         version: 0.15.7(@typescript/native-preview@7.0.0-dev.20251008.1)(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
