@@ -13,12 +13,11 @@
 		"lint": "biome lint --write",
 		"format": "biome format --write",
 		"check": "biome check --write",
-		"gen:openapi": "node --import tsx/esm scripts/generate-openapi.ts",
-		"apply:db-migrations": "psqldef -U wellness -p 5432 -h localhost --password=wellness_dev_pass wellness_database_local < shared/schema.sql"
+		"gen:openapi": "node --import tsx/esm scripts/generate-openapi.ts"
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.19.5",
-		"@hono/zod-openapi": "^1.1.3",
+		"@hono/zod-openapi": "^1.1.4",
 		"@minimum-monorepo/shared-lib": "workspace:^",
 		"@serverless/typescript": "^4.20.2",
 		"esbuild": "^0.25.11",

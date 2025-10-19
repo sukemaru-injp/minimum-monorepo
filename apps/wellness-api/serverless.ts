@@ -50,7 +50,6 @@ const serverlessConfiguration = {
 			minify: false,
 			sourcemap: false,
 			exclude: ['aws-sdk'],
-			format: 'esm',
 			target: 'node22',
 			platform: 'node',
 			tsconfig: './tsconfig.json'
