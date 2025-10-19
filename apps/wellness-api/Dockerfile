@@ -40,4 +40,4 @@ COPY --from=builder /app/packages/shared-lib/dist packages/shared-lib/dist
 
 EXPOSE 3050
 
-CMD ["node", "apps/wellness-api/dist/index.js"]
+CMD ["pnpm", "--filter", "wellness-api", "start"]
