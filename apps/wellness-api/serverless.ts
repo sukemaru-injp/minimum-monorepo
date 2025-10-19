@@ -3,6 +3,9 @@ import type { AWS } from '@serverless/typescript';
 const serverlessConfiguration = {
 	service: 'wellness-api',
 	frameworkVersion: '4',
+	package: {
+		patterns: ['!scripts/**']
+	},
 	provider: {
 		name: 'aws',
 		runtime: 'nodejs22.x',
@@ -47,12 +50,18 @@ const serverlessConfiguration = {
 	build: {
 		esbuild: {
 			bundle: true,
-			minify: false,
+			minify: true,
 			sourcemap: false,
 			exclude: ['aws-sdk'],
+			format: 'esm',
+			outExtension: { '.js': '.js' },
 			target: 'node22',
 			platform: 'node',
-			tsconfig: './tsconfig.json'
+			tsconfig: './tsconfig.json',
+			banner: {
+				// Provide CommonJS-style require for deps that still call require()
+				js: "import { createRequire as __createRequire } from 'module';\nconst require = __createRequire(import.meta.url);"
+			}
 		}
 	}
 } satisfies AWS;
