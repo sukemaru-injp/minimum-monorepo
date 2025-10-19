@@ -6,7 +6,7 @@
 		"serve": "tsx watch src/server.ts",
 		"build": "tsc",
 		"start": "node dist/server.js",
-		"build:lambda": "esbuild --bundle --outfile=./dist/handler.cjs --platform=node --target=node22 ./src/handler.ts",
+		"build:lambda": "esbuild --bundle --outfile=./dist/handler.js --platform=node --target=node22 ./src/handler.ts",
 		"zip": "zip -j lambda.zip dist/handler.js",
 		"update": "aws lambda update-function-code --zip-file fileb://lambda.zip --function-name wellness-api",
 		"deploy": "run-s build zip update",

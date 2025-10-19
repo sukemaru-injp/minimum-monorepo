@@ -12,7 +12,7 @@ This is a pnpm + Turborepo monorepo for a wellness API application. The project 
 - **Runtime:** Node.js ≥22.0.0
 - **API Framework:** Hono with OpenAPI/Zod validation
 - **Linting/Formatting:** Biome (not ESLint/Prettier)
-- **Logging:** Winston (via shared-lib)
+- **Logging:** Pino (via shared-lib)
 
 ## Project Structure
 
@@ -96,8 +96,8 @@ routes/
 Provides common utilities across the monorepo.
 
 **Current Exports:**
-- `logger` - Winston logger instance configured for JSON logging
-- `createLogger()` - Factory function to create custom logger instances
+- `logger` - Pino-backed logger instance configured for JSON logging
+- `createLogger()` - Factory function returning a Pino-backed logger
 
 The shared-lib uses `tsgo` (TypeScript native compiler preview) for fast builds with the `dev` script.
 

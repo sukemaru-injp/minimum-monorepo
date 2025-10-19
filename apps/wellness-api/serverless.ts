@@ -8,9 +8,9 @@ const serverlessConfiguration = {
 		runtime: 'nodejs22.x',
 		region: 'ap-northeast-1',
 		stage: 'dev',
-		environment: {
-			TEST: '${opt:test, "default-test-value"}' // デプロイ時に環境変数を設定可能
-		},
+		// environment: {
+		// 	TEST: '${opt:test, "default-test-value"}' // デプロイ時に環境変数を設定可能
+		// },
 		iamRoleStatements: [
 			{
 				Effect: 'Allow',
@@ -23,40 +23,39 @@ const serverlessConfiguration = {
 			}
 		]
 	},
-  functions: {
-    app: {
-      handler: 'dist/handler.handler',
-      events: [
-        {
-          httpApi: {
-            path: '/{proxy+}',
-            method: '*',
-          },
-        },
-        {
-          httpApi: {
-            path: '/',
-            method: '*',
-          },
-        },
-      ],
-      timeout: 15,
-      memorySize: 512,
-    },
-  },
-  build: {
-    esbuild: {
-      bundle: true,
-      minify: false,
-      sourcemap: false,
-      exclude: ['aws-sdk'],
-      target: 'node22',
-      platform: 'node',
-      tsconfig: "./tsconfig.json",
-      mainFields: ['module', 'main'],
-      conditions: ['import', 'node']
-    },
-  }
+	functions: {
+		app: {
+			handler: 'dist/handler.handler',
+			events: [
+				{
+					httpApi: {
+						path: '/{proxy+}',
+						method: '*'
+					}
+				},
+				{
+					httpApi: {
+						path: '/',
+						method: '*'
+					}
+				}
+			],
+			timeout: 15,
+			memorySize: 512
+		}
+	},
+	build: {
+		esbuild: {
+			bundle: true,
+			minify: false,
+			sourcemap: false,
+			exclude: ['aws-sdk'],
+			format: 'esm',
+			target: 'node22',
+			platform: 'node',
+			tsconfig: './tsconfig.json'
+		}
+	}
 } satisfies AWS;
 
 export default serverlessConfiguration;
