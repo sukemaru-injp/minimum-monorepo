@@ -1,0 +1,27 @@
+{
+  "unknown": {
+    "versionFramework": "4.21.1",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "command": [
+      "mcp"
+    ],
+    "options": {},
+    "orgId": "be0b6f31-5f18-4219-b699-2726711106d7",
+    "orgName": "sukemarutest",
+    "userId": "hHxBwglmxXWGzkBkJ9",
+    "userName": "sukemarutest",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
