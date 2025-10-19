@@ -26,6 +26,9 @@ importers:
       '@minimum-monorepo/shared-lib':
         specifier: workspace:^
         version: link:../../packages/shared-lib
+      '@serverless/typescript':
+        specifier: ^4.20.2
+        version: 4.20.2
       esbuild:
         specifier: ^0.25.11
         version: 0.25.11
@@ -461,6 +464,9 @@ packages:
     resolution: {integrity: sha512-Wi6AXf0k0L7E2gteNsNHUs7UMwCIhsCTs6+tqQ5GPwVRWMaflqGec4Sd8n6+FNFDw9vGcReqk2KzBDhCa1DLYg==}
     cpu: [x64]
     os: [linux]
+
+  '@serverless/typescript@4.20.2':
+    resolution: {integrity: sha512-mWlIBn7S1CFB2hFVaprxBlP9MSFBI+VhdFa/dnsAxVzDNC6iX6RNQ4xDklzqtvE3d/3nHBdV0lcy+ngY/utlMQ==}
 
   '@so-ric/colorspace@1.1.6':
     resolution: {integrity: sha512-/KiKkpHNOBgkFJwu9sh48LkHSMYGyuTcSFK/qMBdnOAlrRJzRSXAOFB5qwzaVQuDl8wAvHVMkaASQDReTahxuw==}
@@ -1162,6 +1168,8 @@ snapshots:
 
   '@rollup/rollup-linux-x64-gnu@4.52.4':
     optional: true
+
+  '@serverless/typescript@4.20.2': {}
 
   '@so-ric/colorspace@1.1.6':
     dependencies:
