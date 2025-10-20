@@ -31,15 +31,15 @@ const serverlessConfiguration = {
 			handler: 'dist/handler.handler',
 			events: [
 				{
-					httpApi: {
+					http: {
 						path: '/{proxy+}',
-						method: '*'
+						method: 'any'
 					}
 				},
 				{
-					httpApi: {
+					http: {
 						path: '/',
-						method: '*'
+						method: 'any'
 					}
 				}
 			],
