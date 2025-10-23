@@ -22,14 +22,17 @@
 		"@serverless/typescript": "^4.20.2",
 		"esbuild": "^0.25.11",
 		"hono": "^4.9.10",
+		"kysely": "^0.27.4",
 		"neverthrow": "^8.2.0",
 		"npm-run-all2": "^8.0.4",
+		"pg": "^8.11.5",
 		"zod": "^4.1.12",
 		"zod-openapi": "^5.4.3"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.2.5",
 		"@types/node": "^20.11.17",
+		"@types/pg": "^8.15.5",
 		"tsx": "^4.7.1",
 		"typescript": "^5.9.3",
 		"yaml": "^2.8.1"
