@@ -4,6 +4,8 @@
 	"description": "A minimal monorepo setup",
 	"scripts": {
 		"dev": "turbo run dev --filter=./apps/* --only",
+		"dev:api": "pnpm --filter wellness-api dev",
+		"dev:console": "pnpm --filter management-console dev",
 		"build": "turbo run build",
 		"test": "turbo run test",
 		"lint": "turbo run lint",
