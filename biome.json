@@ -15,7 +15,8 @@
 			"!**/node_modules",
       "!**/dist",
       "!**/build",
-			"!**/.next/**/*"
+			"!**/.next/**/*",
+			"!**/.pnpm/**/*"
 		]
 	},
 	"formatter": {

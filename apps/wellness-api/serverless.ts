@@ -11,6 +11,16 @@ const serverlessConfiguration = {
 		runtime: 'nodejs22.x',
 		region: 'ap-northeast-1',
 		stage: 'dev',
+		// Place the Lambda inside private subnets while keeping outbound access via the specified security group
+		vpc: {
+			securityGroupIds: [
+				'${ssm:/wellness-api/${sls:stage}/lambda-security-group-id}'
+			],
+			subnetIds: [
+				'${ssm:/wellness-api/${sls:stage}/private-subnet-a-id}',
+				'${ssm:/wellness-api/${sls:stage}/private-subnet-b-id}'
+			]
+		},
 		environment: {
 			TEST_ENV_VAR: '${ssm:TEST_ENV_VAR}'
 		},
@@ -28,7 +38,7 @@ const serverlessConfiguration = {
 	},
 	functions: {
 		app: {
-			handler: 'dist/handler.handler',
+			handler: 'dist/handler.appEntry',
 			events: [
 				{
 					http: {
@@ -45,6 +55,32 @@ const serverlessConfiguration = {
 			],
 			timeout: 15,
 			memorySize: 512
+		}
+	},
+	resources: {
+		Resources: {
+			AppLambdaInvokePermissionForApiGateway: {
+				Type: 'AWS::Lambda::Permission',
+				Properties: {
+					Action: 'lambda:InvokeFunction',
+					FunctionName: { 'Fn::GetAtt': ['AppLambdaFunction', 'Arn'] },
+					Principal: 'apigateway.amazonaws.com',
+					SourceArn: {
+						'Fn::Join': [
+							'',
+							[
+								'arn:aws:execute-api:',
+								{ Ref: 'AWS::Region' },
+								':',
+								{ Ref: 'AWS::AccountId' },
+								':',
+								{ Ref: 'ApiGatewayRestApi' },
+								'/*/*'
+							]
+						]
+					}
+				}
+			}
 		}
 	},
 	build: {
