@@ -11,9 +11,9 @@ const serverlessConfiguration = {
 		runtime: 'nodejs22.x',
 		region: 'ap-northeast-1',
 		stage: 'dev',
-		// environment: {
-		// 	TEST: '${opt:test, "default-test-value"}' // デプロイ時に環境変数を設定可能
-		// },
+		environment: {
+			TEST_ENV_VAR: '${ssm:TEST_ENV_VAR}'
+		},
 		iamRoleStatements: [
 			{
 				Effect: 'Allow',
