@@ -14,7 +14,8 @@
 		"lint": "biome lint --write",
 		"format": "biome format --write",
 		"check": "biome check --write",
-		"gen:openapi": "node --import tsx/esm scripts/generate-openapi.ts"
+		"gen:openapi": "node --import tsx/esm scripts/generate-openapi.ts",
+		"gen:db-type": "kysely-codegen --dialect postgres --out-file src/db/db.d.ts"
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.19.5",
@@ -34,6 +35,7 @@
 		"@biomejs/biome": "^2.2.5",
 		"@types/node": "^20.11.17",
 		"@types/pg": "^8.15.5",
+		"kysely-codegen": "^0.19.0",
 		"tsx": "^4.7.1",
 		"typescript": "^5.9.3",
 		"yaml": "^2.8.1"

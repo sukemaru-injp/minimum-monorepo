@@ -1,12 +1,7 @@
 import { logger } from '@minimum-monorepo/shared-lib';
-import {
-	type Generated,
-	type Insertable,
-	Kysely,
-	PostgresDialect,
-	type Selectable
-} from 'kysely';
+import { type Insertable, Kysely, PostgresDialect, type Selectable } from 'kysely';
 import { Pool, types } from 'pg';
+import type { DB } from './db';
 
 types.setTypeParser(20, (value) => Number.parseInt(value, 10));
 types.setTypeParser(1700, (value) => Number.parseFloat(value));
@@ -34,20 +29,10 @@ const dialect = new PostgresDialect({
 	pool
 });
 
-interface UsersTable {
-	id: Generated<number>;
-	email: string;
-	name: string;
-	created_at: Generated<Date>;
-	updated_at: Generated<Date>;
-}
+export type Database = DB;
 
-export interface Database {
-	users: UsersTable;
-}
-
-export type UserRow = Selectable<UsersTable>;
-export type NewUser = Insertable<UsersTable>;
+export type UserRow = Selectable<Database['users']>;
+export type NewUser = Insertable<Database['users']>;
 
 export const db = new Kysely<Database>({
 	dialect
