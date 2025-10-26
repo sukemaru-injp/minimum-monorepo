@@ -1,5 +1,5 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
-import { logger } from '@minimum-monorepo/shared-lib';
+import { logger, uuid } from '@minimum-monorepo/shared-lib';
 import { env } from 'hono/adapter';
 import type { LambdaContext, LambdaEvent } from 'hono/aws-lambda';
 import { requestId } from 'hono/request-id';
@@ -17,6 +17,9 @@ const app = new OpenAPIHono<{ Bindings: Bindings }>();
 app.use('*', requestId());
 
 app.get('/', (c) => {
+	const id = uuid();
+	logger.info(`Generated id: ${id}`);
+
 	logger.info('Root endpoint hit', {
 		path: c.req.path,
 		userAgent: c.req.header('user-agent') ?? 'unknown'

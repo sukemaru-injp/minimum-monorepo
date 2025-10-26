@@ -5,3 +5,4 @@ export {
 	type Logger,
 	logger
 } from './logger';
+export { uuid } from './uuid';
