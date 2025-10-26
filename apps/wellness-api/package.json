@@ -4,9 +4,10 @@
 	"scripts": {
 		"dev": "tsx watch src/server.ts",
 		"serve": "tsx watch src/server.ts",
-		"build": "tsc",
+		"typecheck": "tsc --noEmit",
+		"build": "tsc --noEmit && ESBUILD_ENTRY=all node ./scripts/run-esbuild.mjs",
 		"start": "node dist/server.js",
-		"build:lambda": "esbuild --bundle --format=esm --outfile=./dist/handler.js --platform=node --target=node22 --banner:js=\"import { createRequire as __createRequire } from 'module';const require = __createRequire(import.meta.url);\" ./src/handler.ts",
+		"build:lambda": "ESBUILD_ENTRY=handler node ./scripts/run-esbuild.mjs",
 		"zip": "zip -j lambda.zip dist/handler.js",
 		"update": "aws lambda update-function-code --zip-file fileb://lambda.zip --function-name wellness-api",
 		"deploy": "run-s build zip update",
