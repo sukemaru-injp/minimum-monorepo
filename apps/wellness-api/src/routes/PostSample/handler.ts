@@ -19,7 +19,12 @@ const handler: RouteHandler<typeof postSampleRoute> = async (c) => {
 	try {
 		const insertedUser = await db
 			.insertInto('users')
-			.values({ email, name })
+			.values({
+				email,
+				name,
+				created_at: new Date().toISOString(),
+				updated_at: new Date().toISOString()
+			})
 			.returning(['id', 'email', 'name', 'created_at', 'updated_at'])
 			.executeTakeFirstOrThrow();
 

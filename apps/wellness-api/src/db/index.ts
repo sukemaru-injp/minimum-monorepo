@@ -1,5 +1,10 @@
 import { logger } from '@minimum-monorepo/shared-lib';
-import { type Insertable, Kysely, PostgresDialect, type Selectable } from 'kysely';
+import {
+	type Insertable,
+	Kysely,
+	PostgresDialect,
+	type Selectable
+} from 'kysely';
 import { Pool, types } from 'pg';
 import type { DB } from './db';
 
